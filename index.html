@@ -3,430 +3,536 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RNCP 39583 - Expert en Développement Logiciel</title>
+    <title>Formulaire Validation Capstone 1 - RNCP 39583</title>
     <style>
-        @page {
-            size: A4;
-            margin: 20mm;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', 'Calibri', Arial, sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 2rem 1rem;
         }
         
-        * { 
-            margin: 0; 
-            padding: 0; 
-            box-sizing: border-box; 
-            -webkit-print-color-adjust: exact;
-            print-color-adjust: exact;
-        }
-        
-        body { 
-            font-family: Arial, sans-serif;
-            background: white;
-            color: #000;
-            line-height: 1.4;
-            font-size: 11px;
-        }
-        
-        .document {
-            width: 100%;
-            max-width: 800px;
+        .container {
+            max-width: 900px;
             margin: 0 auto;
             background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            overflow: hidden;
         }
         
-        .header { 
-            text-align: center;
-            padding: 20px 0;
-            border-bottom: 3px solid #2563eb;
-            margin-bottom: 25px;
-        }
-        
-        .header h1 { 
-            font-size: 32px;
-            font-weight: bold;
-            color: #1a1a1a;
-            margin-bottom: 8px;
-        }
-        
-        .header h2 { 
-            font-size: 18px; 
-            color: #374151;
-            margin-bottom: 5px;
-        }
-        
-        .header p {
-            font-size: 14px; 
-            color: #6b7280;
-        }
-        
-        .coverage-section {
-            text-align: center;
-            margin: 20px 0;
-            padding: 15px;
-            background: #f8fafc;
-            border: 2px solid #e5e7eb;
-            border-radius: 8px;
-        }
-        
-        .coverage-badge {
-            display: inline-block;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background: #2563eb;
+        .form-header {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
             color: white;
-            line-height: 80px;
-            font-size: 20px;
-            font-weight: bold;
-            margin-bottom: 10px;
-        }
-        
-        .coverage-text {
-            font-size: 16px;
-            font-weight: bold;
-            color: #2563eb;
-        }
-        
-        .stats-section {
-            display: table;
-            width: 100%;
-            margin: 25px 0;
-        }
-        
-        .stat-item {
-            display: table-cell;
-            width: 25%;
+            padding: 2rem;
             text-align: center;
-            padding: 15px 10px;
-            border: 1px solid #d1d5db;
-            background: #f9fafb;
         }
         
-        .stat-number {
-            font-size: 28px;
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
+        .form-header h1 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
         
-        .stat-label {
-            font-size: 12px;
-            font-weight: bold;
-            margin-bottom: 3px;
+        .form-header p {
+            opacity: 0.9;
+            font-size: 1rem;
         }
         
-        .stat-desc {
-            font-size: 10px;
-            color: #6b7280;
+        .form-content {
+            padding: 2rem;
         }
-        
-        .projects { color: #2563eb; }
-        .lifeskills { color: #f59e0b; }
-        .milestone { color: #7c3aed; }
-        .total { color: #059669; }
         
         .section {
-            margin: 20px 0;
-            border: 1px solid #d1d5db;
-            break-inside: avoid;
+            margin-bottom: 2.5rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
         }
         
-        .section-header {
-            background: #374151;
-            color: white;
-            padding: 12px 15px;
-            font-weight: bold;
-            font-size: 13px;
+        .section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
         }
         
-        .competency-list {
-            padding: 15px;
+        .section-title {
+            color: #1e293b;
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 4px solid #f59e0b;
         }
         
-        .competency-item {
-            margin: 8px 0;
-            padding-left: 15px;
-            position: relative;
+        .form-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
         }
         
-        .competency-item::before {
-            content: "●";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
+        .form-group {
+            margin-bottom: 1.5rem;
         }
         
-        .projects-item::before { color: #2563eb; }
-        .lifeskills-item::before { color: #f59e0b; }
-        .milestone-item::before { color: #7c3aed; }
-        
-        .competency-title {
-            font-weight: bold;
-            color: #111827;
-            font-size: 11px;
-            margin-bottom: 2px;
+        .form-label {
+            display: block;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 0.5rem;
+            font-size: 0.95rem;
         }
         
-        .competency-source {
-            font-size: 10px;
-            color: #6b7280;
-            font-style: italic;
+        .required {
+            color: #dc2626;
         }
         
-        .footer {
-            margin-top: 30px;
-            padding-top: 15px;
-            border-top: 1px solid #e5e7eb;
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s ease;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.1);
+        }
+        
+        .form-select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            background-color: white;
+            cursor: pointer;
+        }
+        
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            margin-top: 0.25rem;
+            transform: scale(1.2);
+        }
+        
+        .skill-level {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+        
+        .skill-level label {
             text-align: center;
-            font-size: 10px;
-            color: #9ca3af;
+            font-size: 0.8rem;
+            color: #6b7280;
         }
         
-        .download-instructions {
+        .skill-level input[type="radio"] {
+            margin: 0.25rem 0;
+        }
+        
+        .rating-labels {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.75rem;
+            color: #6b7280;
+            text-align: center;
+        }
+        
+        .file-upload {
+            border: 2px dashed #d1d5db;
+            border-radius: 6px;
+            padding: 2rem;
+            text-align: center;
+            background: #f9fafb;
+            transition: all 0.2s ease;
+        }
+        
+        .file-upload:hover {
+            border-color: #f59e0b;
+            background: #fefbf3;
+        }
+        
+        .file-upload input[type="file"] {
+            display: none;
+        }
+        
+        .file-upload-label {
+            cursor: pointer;
+            color: #f59e0b;
+            font-weight: 600;
+        }
+        
+        .info-box {
+            background: #eff6ff;
+            border: 1px solid #bfdbfe;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .info-box h4 {
+            color: #1d4ed8;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .info-box p {
+            color: #1e40af;
+            font-size: 0.85rem;
+            margin: 0;
+        }
+        
+        .info-box a {
+            color: #1d4ed8;
+            text-decoration: underline;
+        }
+        
+        .submit-section {
+            background: #f8fafc;
+            padding: 2rem;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        .submit-btn {
+            background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+        }
+        
+        .warning-box {
             background: #fef3c7;
             border: 1px solid #f59e0b;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 5px;
-            text-align: center;
+            border-radius: 6px;
+            padding: 1rem;
+            margin-bottom: 2rem;
         }
         
-        .download-instructions h3 {
+        .warning-box h4 {
             color: #92400e;
-            margin-bottom: 10px;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
         }
         
-        .download-instructions p {
-            color: #92400e;
-            font-size: 12px;
-        }
-        
-        @media print {
-            .download-instructions {
-                display: none;
-            }
-            
-            body {
-                font-size: 8px;
-            }
-            
-            .section {
-                page-break-inside: avoid;
-                margin: 8px 0;
-            }
-            
-            .competency-item {
-                margin: 2px 0;
-            }
-            
-            .competency-list {
-                padding: 6px;
-            }
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .skill-level { grid-template-columns: 1fr; }
+            .rating-labels { grid-template-columns: 1fr; }
         }
     </style>
 </head>
 <body>
-    <div class="document">
+    <div class="container">
+        <div class="form-header">
+            <h1>FORMULAIRE DE VALIDATION CAPSTONE 1</h1>
+            <p>Évaluation des Compétences Java & Qualification RNCP 39583</p>
+        </div>
+        
+        <div class="form-content">
+            <div class="warning-box">
+                <h4>Critères de Validation</h4>
+                <p>Tous les critères doivent être validés à 100% pour accéder au Capstone 2. L'approbation du staff pédagogique est obligatoire pour la progression vers les compétences RNCP stratégiques.</p>
+            </div>
+            
+            <form>
+                <!-- Section 1: Informations Personnelles -->
+                <div class="section">
+                    <h2 class="section-title">1. Informations Personnelles</h2>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label class="form-label" for="prenom">Prénom <span class="required">*</span></label>
+                            <input type="text" id="prenom" name="prenom" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="nom">Nom <span class="required">*</span></label>
+                            <input type="text" id="nom" name="nom" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="email">Email 01Talent <span class="required">*</span></label>
+                            <input type="email" id="email" name="email" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="cohorte">Cohorte <span class="required">*</span></label>
+                            <select id="cohorte" name="cohorte" class="form-select" required>
+                                <option value="">Sélectionner votre cohorte</option>
+                                <option value="2024-A">2024-A (Janvier-Juin)</option>
+                                <option value="2024-B">2024-B (Juillet-Décembre)</option>
+                                <option value="2025-A">2025-A (Janvier-Juin)</option>
+                                <option value="2025-B">2025-B (Juillet-Décembre)</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="date_naissance">Date de Naissance <span class="required">*</span></label>
+                            <input type="date" id="date_naissance" name="date_naissance" class="form-input" required>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="niveau_etudes">Niveau d'Études Antérieur</label>
+                            <select id="niveau_etudes" name="niveau_etudes" class="form-select">
+                                <option value="">Sélectionner</option>
+                                <option value="bac">Baccalauréat</option>
+                                <option value="bac+2">Bac+2 (BTS/DUT)</option>
+                                <option value="bac+3">Bac+3 (Licence)</option>
+                                <option value="bac+4">Bac+4 (Master 1)</option>
+                                <option value="bac+5">Bac+5+ (Master/Ingénieur)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
 
-        
-        <div class="header">
-            <h1>RNCP 39583</h1>
-            <h2>Expert en Développement Logiciel</h2>
-            <p>Programme 01Talent - Analyse de Couverture</p>
+                <!-- Section 2: Validation du Parcours Java -->
+                <div class="section">
+                    <h2 class="section-title">2. Validation du Parcours Java Full Stack</h2>
+                    <div class="info-box">
+                        <h4>Prérequis Obligatoires</h4>
+                        <p>Vous devez avoir terminé avec succès tous les modules de la branche Java Full Stack pour être éligible au Capstone 1.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Modules Java Full Stack Complétés <span class="required">*</span></label>
+                        <div class="checkbox-group">
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="module_java_base" name="modules_completed[]" value="java_base" required>
+                                <label for="module_java_base">Java Fundamentals & POO</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="module_collections" name="modules_completed[]" value="collections" required>
+                                <label for="module_collections">Collections & Structures de Données</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="module_database" name="modules_completed[]" value="database" required>
+                                <label for="module_database">Base de Données & JDBC/JPA</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="module_spring" name="modules_completed[]" value="spring" required>
+                                <label for="module_spring">Spring Framework & Spring Boot</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="module_api" name="modules_completed[]" value="api" required>
+                                <label for="module_api">API REST & Services Web</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="module_frontend" name="modules_completed[]" value="frontend" required>
+                                <label for="module_frontend">Technologies Frontend (HTML/CSS/JS ou Angular)</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="module_tests" name="modules_completed[]" value="tests" required>
+                                <label for="module_tests">Tests Unitaires & Intégration</label>
+                            </div>
+                            <div class="checkbox-item">
+                                <input type="checkbox" id="module_devops" name="modules_completed[]" value="devops" required>
+                                <label for="module_devops">Bases DevOps & Déploiement</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="parcours_termine">Confirmez-vous avoir terminé l'intégralité de la branche Java Full Stack ? <span class="required">*</span></label>
+                        <select id="parcours_termine" name="parcours_termine" class="form-select" required>
+                            <option value="">Sélectionner</option>
+                            <option value="oui">Oui, parcours complètement terminé</option>
+                            <option value="en_cours">Non, encore en cours</option>
+                            <option value="non">Non, pas encore commencé</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="date_fin_parcours">Date de fin du parcours Java Full Stack</label>
+                        <input type="date" id="date_fin_parcours" name="date_fin_parcours" class="form-input">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="projets_parcours">Projets réalisés pendant le parcours</label>
+                        <textarea id="projets_parcours" name="projets_parcours" class="form-textarea" placeholder="Listez les principaux projets Java que vous avez réalisés pendant votre formation (buy-01, buy-02, travel-plan, etc.)..."></textarea>
+                    </div>
+                </div>
+
+                <!-- Section 3: Expérience Professionnelle -->
+                <div class="section">
+                    <h2 class="section-title">3. Expérience Professionnelle</h2>
+                    <div class="form-group">
+                        <label class="form-label" for="experience_developpement">Avez-vous une expérience en développement logiciel ?</label>
+                        <select id="experience_developpement" name="experience_developpement" class="form-select">
+                            <option value="">Sélectionner</option>
+                            <option value="aucune">Aucune expérience</option>
+                            <option value="stage">Stage(s) uniquement</option>
+                            <option value="moins_1_an">Moins d'1 an</option>
+                            <option value="1_3_ans">1 à 3 ans</option>
+                            <option value="3_5_ans">3 à 5 ans</option>
+                            <option value="plus_5_ans">Plus de 5 ans</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="experience_java">Expérience spécifique avec Java</label>
+                        <select id="experience_java" name="experience_java" class="form-select">
+                            <option value="">Sélectionner</option>
+                            <option value="aucune">Aucune</option>
+                            <option value="formation">Formation uniquement</option>
+                            <option value="projets_perso">Projets personnels</option>
+                            <option value="stage">Stage/Projet étudiant</option>
+                            <option value="professionnel">Expérience professionnelle</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="projets_realises">Décrivez vos principaux projets Java réalisés</label>
+                        <textarea id="projets_realises" name="projets_realises" class="form-textarea" placeholder="Décrivez 2-3 projets Java significatifs que vous avez réalisés (technologies utilisées, durée, complexité)..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="experience_equipe">Expérience de travail en équipe sur des projets techniques</label>
+                        <select id="experience_equipe" name="experience_equipe" class="form-select">
+                            <option value="">Sélectionner</option>
+                            <option value="aucune">Aucune</option>
+                            <option value="scolaire">Projets scolaires uniquement</option>
+                            <option value="stage">Stage en équipe</option>
+                            <option value="professionnel">Expérience professionnelle</option>
+                            <option value="open_source">Projets open source</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Section 4: Documents et Diplômes -->
+                <div class="section">
+                    <h2 class="section-title">4. Documents et Diplômes</h2>
+                    <div class="info-box">
+                        <h4>Documents Requis</h4>
+                        <p>Veuillez télécharger vos diplômes et justificatifs académiques pour validation de votre parcours.</p>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Diplôme le Plus Élevé <span class="required">*</span></label>
+                        <div class="file-upload">
+                            <input type="file" id="diplome" name="diplome" accept=".pdf,.jpg,.jpeg,.png" required>
+                            <label for="diplome" class="file-upload-label">
+                                Cliquez pour télécharger votre diplôme<br>
+                                <small>Formats acceptés: PDF, JPG, PNG (max 5MB)</small>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Reconnaissance de Périodes d'Études - Centre ENIC-NARIC France</label>
+                        <div class="file-upload">
+                            <input type="file" id="enic_naric" name="enic_naric" accept=".pdf,.jpg,.jpeg,.png">
+                            <label for="enic_naric" class="file-upload-label">
+                                Cliquez pour télécharger l'attestation ENIC-NARIC<br>
+                                <small>Requis pour les diplômes étrangers - Formats: PDF, JPG, PNG</small>
+                            </label>
+                        </div>
+                        <div class="info-box" style="margin-top: 0.5rem;">
+                            <h4>Information ENIC-NARIC</h4>
+                            <p>Si vous avez obtenu vos diplômes à l'étranger, une attestation de reconnaissance du Centre ENIC-NARIC France est requise. Vous pouvez faire votre demande sur <a href="https://www.ciep.fr/enic-naric-france" target="_blank">www.ciep.fr/enic-naric-france</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">Autres Diplômes ou Certifications</label>
+                        <div class="file-upload">
+                            <input type="file" id="autres_diplomes" name="autres_diplomes" accept=".pdf,.jpg,.jpeg,.png" multiple>
+                            <label for="autres_diplomes" class="file-upload-label">
+                                Cliquez pour télécharger d'autres certifications<br>
+                                <small>Optionnel - Vous pouvez sélectionner plusieurs fichiers</small>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="pays_diplome">Pays d'obtention du diplôme principal <span class="required">*</span></label>
+                        <select id="pays_diplome" name="pays_diplome" class="form-select" required>
+                            <option value="">Sélectionner le pays</option>
+                            <option value="france">France</option>
+                            <option value="belgique">Belgique</option>
+                            <option value="suisse">Suisse</option>
+                            <option value="canada">Canada</option>
+                            <option value="maroc">Maroc</option>
+                            <option value="tunisie">Tunisie</option>
+                            <option value="algerie">Algérie</option>
+                            <option value="senegal">Sénégal</option>
+                            <option value="cote_ivoire">Côte d'Ivoire</option>
+                            <option value="cameroun">Cameroun</option>
+                            <option value="autre">Autre (préciser ci-dessous)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="autre_pays">Si "Autre", précisez le pays</label>
+                        <input type="text" id="autre_pays" name="autre_pays" class="form-input" placeholder="Nom du pays">
+                    </div>
+                </div>
+
+                <!-- Section 5: Motivation RNCP -->
+                <div class="section">
+                    <h2 class="section-title">5. Motivation pour la Certification RNCP</h2>
+                    <div class="form-group">
+                        <label class="form-label" for="objectifs_professionnels">Objectifs Professionnels <span class="required">*</span></label>
+                        <textarea id="objectifs_professionnels" name="objectifs_professionnels" class="form-textarea" required placeholder="Décrivez vos objectifs de carrière et comment la certification RNCP 39583 s'inscrit dans votre projet professionnel..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="motivation_leadership">Pourquoi souhaitez-vous développer des compétences de leadership ?</label>
+                        <textarea id="motivation_leadership" name="motivation_leadership" class="form-textarea" placeholder="Expliquez votre intérêt pour les compétences managériales et stratégiques..."></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="disponibilite">Confirmez-vous votre disponibilité pour les 5 semaines complètes du Milestone Project ? <span class="required">*</span></label>
+                        <select id="disponibilite" name="disponibilite" class="form-select" required>
+                            <option value="">Sélectionner</option>
+                            <option value="oui">Oui, disponibilité complète</option>
+                            <option value="partielle">Disponibilité partielle (préciser ci-dessous)</option>
+                            <option value="non">Non disponible</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
         </div>
         
-        <div class="coverage-section">
-            <div class="coverage-badge">100%</div>
-            <div class="coverage-text">Couverture Intégrale Validée</div>
-        </div>
-        
-        <div class="stats-section">
-            <div class="stat-item projects">
-                <span class="stat-number">10</span>
-                <div class="stat-label">Projets Techniques</div>
-                <div class="stat-desc">Développement complet</div>
-            </div>
-            <div class="stat-item lifeskills">
-                <span class="stat-number">4</span>
-                <div class="stat-label">Lifeskills + Stage</div>
-                <div class="stat-desc">Compétences pro</div>
-            </div>
-            <div class="stat-item milestone">
-                <span class="stat-number">1</span>
-                <div class="stat-label">Milestone Project</div>
-                <div class="stat-desc">Projet senior</div>
-            </div>
-            <div class="stat-item total">
-                <span class="stat-number">34</span>
-                <div class="stat-label">Compétences RNCP</div>
-                <div class="stat-desc">100% référentiel</div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">BC01 - Cadrer un projet de développement d'applications (11 compétences)</div>
-            <div class="competency-list">
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Cartographier les acteurs du projet et leurs rôles</div>
-                    <div class="competency-source">Milestone Project - Cartographie stratégique</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Analyser la demande par entretiens d'explicitation</div>
-                    <div class="competency-source">Projets: buy-01, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Cartographier opportunités et menaces du projet</div>
-                    <div class="competency-source">Milestone Project - Analyse SWOT</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Évaluer la faisabilité technique</div>
-                    <div class="competency-source">Milestone Project - Évaluation technique</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Cartographier les risques techniques et fonctionnels</div>
-                    <div class="competency-source">Projets: safe-zone, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Réaliser veille technique et réglementaire</div>
-                    <div class="competency-source">Milestone Project - Veille stratégique</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Sélectionner l'architecture technique adaptée</div>
-                    <div class="competency-source">Projets: buy-01, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Évaluer la charge de travail nécessaire</div>
-                    <div class="competency-source">Projets: buy-01, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Estimer le coût associé au projet</div>
-                    <div class="competency-source">Milestone Project - Budgétisation</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Modéliser architecture logicielle</div>
-                    <div class="competency-source">Projets: buy-01, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Proposer décisions et solutions au client</div>
-                    <div class="competency-source">Milestone Project - Négociation commerciale</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">BC02 - Concevoir et développer des applications (9 compétences)</div>
-            <div class="competency-list">
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Mettre en œuvre environnements déploiement et test</div>
-                    <div class="competency-source">Projets: mr-jenk, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Configurer système intégration continue</div>
-                    <div class="competency-source">Projets: mr-jenk, safe-zone</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Concevoir prototype application logicielle</div>
-                    <div class="competency-source">Projets: lets-play, angul-it</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Développer harnais de test unitaire</div>
-                    <div class="competency-source">Projets: mr-jenk, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Développer le logiciel</div>
-                    <div class="competency-source">Projets: lets-play, buy-01, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Déployer logiciel progressivement</div>
-                    <div class="competency-source">Projets: mr-jenk, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Élaborer cahier de recettes</div>
-                    <div class="competency-source">Projets: buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Élaborer plan correction bogues</div>
-                    <div class="competency-source">Projets: buy-02, travel-plan, lets-travel, lets-play</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Rédiger documentation technique</div>
-                    <div class="competency-source">Projets: Tous les projets techniques</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">BC03 - Coordonner et piloter un projet (7 compétences)</div>
-            <div class="competency-list">
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Planifier l'exécution du projet</div>
-                    <div class="competency-source">Projets: travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Piloter l'avancement du projet</div>
-                    <div class="competency-source">Projets: travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Procéder aux arbitrages nécessaires</div>
-                    <div class="competency-source">Milestone Project - Décisions stratégiques</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Piloter l'équipe tout au long du projet</div>
-                    <div class="competency-source">Milestone Project - Management d'équipe</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Évaluer besoins en compétences équipe</div>
-                    <div class="competency-source">Milestone Project - Gestion RH</div>
-                </div>
-                <div class="competency-item lifeskills-item">
-                    <div class="competency-title">Effectuer comptes rendus client</div>
-                    <div class="competency-source">Lifeskills + Internship - Communication</div>
-                </div>
-                <div class="competency-item lifeskills-item">
-                    <div class="competency-title">Réaliser démonstration fonctionnalités</div>
-                    <div class="competency-source">Lifeskills + Internship - Présentations</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <div class="section-header">BC04 - Maintenir l'application en condition opérationnelle (7 compétences)</div>
-            <div class="competency-list">
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Gérer mises à jour dépendances/bibliothèques</div>
-                    <div class="competency-source">Milestone Project - Gestion packages</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Concevoir système supervision et alerte</div>
-                    <div class="competency-source">Projets: buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Consigner anomalies détectées</div>
-                    <div class="competency-source">Projets: safe-zone, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item projects-item">
-                    <div class="competency-title">Créer et déployer correctif</div>
-                    <div class="competency-source">Projets: mr-jenk, safe-zone, buy-02, travel-plan, lets-travel</div>
-                </div>
-                <div class="competency-item lifeskills-item">
-                    <div class="competency-title">Proposer axes d'amélioration</div>
-                    <div class="competency-source">Lifeskills + Internship - Amélioration continue</div>
-                </div>
-                <div class="competency-item milestone-item">
-                    <div class="competency-title">Établir journal versions déployées</div>
-                    <div class="competency-source">Milestone Project - Documentation versions</div>
-                </div>
-                <div class="competency-item lifeskills-item">
-                    <div class="competency-title">Collaborer avec équipes support</div>
-                    <div class="competency-source">Lifeskills + Internship - Collaboration</div>
-                </div>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p>Analyse de couverture RNCP 39583 - Programme 01Talent</p>
+        <div class="submit-section">
+            <button type="submit" class="submit-btn">Soumettre pour Validation</button>
+            <p style="margin-top: 1rem; color: #6b7280; font-size: 0.9rem;">
+                Votre soumission sera évaluée par l'équipe pédagogique. Un retour vous sera donné sous 48h.
+            </p>
         </div>
     </div>
 </body>
